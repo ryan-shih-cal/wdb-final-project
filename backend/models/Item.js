@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 
-const UserSchema = mongoose.Schema({
-  username: {
+// Tracks which receipt it’s from 
+// Associated price 
+
+const ItemSchema = mongoose.Schema({
+  name: {
     type: String,
     required: true,
   },
@@ -9,11 +12,16 @@ const UserSchema = mongoose.Schema({
     type: float,
     required: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
+  peoples: {
+    type: Array,
+    required: false
   },
+  // createdAt: {
+  //   type: Date,
+  //   required: true
+  // }
 });
+// people should be an array of users that have this purchase in their dues/debt 
 
-// export model item with UserSchema
-module.exports = mongoose.model("item", UserSchema);
+// export model item with PurchaseSchema
+module.exports = mongoose.model("item", ItemSchema);
